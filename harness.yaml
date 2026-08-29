@@ -1,0 +1,16 @@
+harness:
+  repository: https://github.com/msg-ai-work/abc.git
+  ref: main
+  mount: .ai-harness/common
+  update_policy: manual-pr
+
+domain:
+  repository: msg-ai-work/abc-projects
+  name: projects
+  owner: choiss7
+
+policy:
+  common_rules_override: false
+  production_human_gate: true
+  secrets_in_repo: false
+  personal_data_in_skill: false
