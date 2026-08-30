@@ -3,6 +3,15 @@ harness:
   ref: main
   mount: .ai-harness/common
   update_policy: manual-pr
+  bootstrap:
+    windows: scripts/bootstrap-harness.ps1
+    unix: scripts/bootstrap-harness.sh
+
+kiro:
+  agent: enterprise-messaging-projects
+  agent_file: .kiro/agents/enterprise-messaging-projects.json
+  common_resources: .ai-harness/common
+  local_skills: skills
 
 domain:
   repository: msg-ai-work/abc-projects
