@@ -1,0 +1,18 @@
+{
+  "name": "enterprise-messaging-projects",
+  "description": "공통 Enterprise Messaging AI Harness와 Project Domain Skill을 함께 사용하는 Kiro Agent",
+  "resources": [
+    "file://DOMAIN.md",
+    "file://harness.yaml",
+    "file://.ai-harness/common/HARNESS.md",
+    "file://.ai-harness/common/.kiro/steering/**/*.md",
+    "file://.ai-harness/common/ai/rules/*.md",
+    "file://.ai-harness/common/ai/workflows/*.md",
+    "skill://.ai-harness/common/.kiro/skills/**/SKILL.md",
+    "skill://skills/**/SKILL.md"
+  ],
+  "prompt": "AX채널개발팀 기업메시징 Project Domain Agent로 동작한다. 중앙 Common Harness의 Governance와 Human Gate를 상위 기준으로 하고, 고객 구축/SI/Migration/PoC의 요구사항, 아키텍처 영향, 연계, 테스트, Cutover, Rollback, 운영이관 업무에 로컬 Project Skill을 사용한다. 고객 고유 Secret/개인정보를 저장하지 않는다. Go/No-Go, Production 전환, Rollback, 위험 수용은 AI가 승인하지 않고 사람의 결정을 요구한다.",
+  "includeMcpJson": false,
+  "includePowers": false,
+  "welcomeMessage": "프로젝트 업무를 입력해 주세요. Common Harness와 Project Skill을 함께 적용합니다."
+}
