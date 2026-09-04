@@ -1,6 +1,6 @@
 ---
 name: risk-issue-management
-description: 프로젝트 Risk와 Issue를 사실, 영향, 확률, 우선순위, 조치, Owner, Due Date, 의사결정 기준으로 구조화하고 종료까지 추적한다.
+description: 프로젝트 Risk와 Issue를 사실, 영향, 확률, 우선순위, 조치, 담당자, Due Date, 의사결정 기준으로 구조화하고 종료까지 추적한다.
 metadata:
   responsible-role: 담당자
   reviewer-role: Reviewer
@@ -29,7 +29,7 @@ Risk와 Issue를 단순 목록이 아니라 다음 행동과 의사결정이 분
 
 - 사실 근거: 테스트 결과, 로그, 일정, 회의 결정, 시스템 상태 등
 - 영향받는 Scope/마일스톤/요구사항
-- 관련 Owner/의사결정자
+- 관련 담당자/의사결정자
 - 기존 조치와 Due Date
 
 사실과 추정을 반드시 분리한다. 근거가 없으면 `Assumption`으로 표시한다.
@@ -43,8 +43,8 @@ Risk와 Issue를 단순 목록이 아니라 다음 행동과 의사결정이 분
 5. Risk는 Probability와 Impact를 평가하고 예방/완화/Contingency를 정의한다.
 6. Issue는 현재 영향, 임시조치, 근본조치, 복구/재검증 기준을 정의한다.
 7. Severity/Priority를 근거와 함께 평가한다.
-8. 각 Action에 단일 Owner와 Due Date를 지정한다.
-9. 외부 의존성 또는 의사결정이 필요하면 Decision Owner와 필요 시점을 명시한다.
+8. 각 Action에 단일 담당자와 Due Date를 지정한다.
+9. 외부 의존성 또는 의사결정이 필요하면 의사결정 담당자와 필요 시점을 명시한다.
 10. 오픈/Cutover에 영향을 주면 Go/No-Go 기준과 연결한다.
 11. 상태를 `Open`, `Monitoring`, `Mitigated`, `Resolved`, `Accepted` 등으로 관리하고 상태 변경 근거를 남긴다.
 12. 종료 시 단순 조치 완료가 아니라 영향 제거와 재발/잔여위험을 검증한다.
@@ -53,7 +53,7 @@ Risk와 Issue를 단순 목록이 아니라 다음 행동과 의사결정이 분
 
 - 고객 영향/데이터 손실/보안/대규모 장애 가능성은 최우선으로 본다.
 - Due Date만 가까운 항목보다 프로젝트 Critical Path 영향이 큰 항목을 우선한다.
-- Owner 없는 Risk/Issue는 관리되고 있는 것으로 보지 않는다.
+- 담당자 없는 Risk/Issue는 관리되고 있는 것으로 보지 않는다.
 - `Accepted`는 조치 불필요가 아니라 사람이 잔여위험을 수용했다는 의미다.
 
 ## 출력 계약
@@ -65,8 +65,8 @@ Risk와 Issue를 단순 목록이 아니라 다음 행동과 의사결정이 분
 - Current Impact (Issue)
 - Prevention / Mitigation / Contingency
 - Temporary Fix / Root Action
-- Owner / Due Date
-- Decision Required / Decision Owner
+- 담당자 / Due Date
+- Decision Required / 의사결정 담당자
 - Go/No-Go Impact
 - Status / Evidence
 - Residual Risk / Close Criteria
@@ -86,7 +86,7 @@ AI는 위험 수용, 일정/범위 변경, 보안 예외, Go/No-Go를 승인하�
 ## Self Check
 
 - 사실과 의견/추정이 구분되어 있는가?
-- 모든 Open 항목에 Owner와 Due Date가 있는가?
+- 모든 Open 항목에 담당자와 Due Date가 있는가?
 - Risk에 예방과 Contingency가 모두 필요한지 검토했는가?
 - Issue의 임시조치와 근본조치를 혼동하지 않았는가?
 - 종료 기준과 잔여위험이 명확한가?
