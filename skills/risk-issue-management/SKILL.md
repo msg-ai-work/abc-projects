@@ -2,7 +2,8 @@
 name: risk-issue-management
 description: 프로젝트 Risk와 Issue를 사실, 영향, 확률, 우선순위, 조치, Owner, Due Date, 의사결정 기준으로 구조화하고 종료까지 추적한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
