@@ -2,7 +2,8 @@
 name: cutover-plan
 description: 프로젝트 오픈 시각부터 안정화까지 사전작업, 실행순서, Evidence, Go/No-Go, 검증, Hypercare와 Escalation을 포함한 Cutover Runbook을 만든다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -29,7 +30,7 @@ metadata:
 
 1. Cutover 목표, 시작/종료 시각, 영향 서비스와 고객 범위를 정의한다.
 2. 사전 작업, Change Freeze, Backup/Snapshot, 기준 데이터 Capture를 정의한다.
-3. 작업을 시간순으로 나누고 각 단계의 Owner, 예상시간, 선행조건을 지정한다.
+3. 작업을 시간순으로 나누고 각 단계의 담당자, 예상시간, 선행조건을 지정한다.
 4. Application, Config, DB, Migration, Routing, External Integration 변경을 명확히 구분한다.
 5. 각 단계에 완료조건과 Evidence를 정의한다.
 6. 중요한 전환 지점마다 Go/No-Go Checkpoint를 배치한다.
@@ -45,7 +46,7 @@ metadata:
 다음 중 하나라도 없으면 Cutover Ready로 판단하지 않는다.
 
 - 확정된 작업 Version/Artifact
-- 각 단계 Owner와 완료 Evidence
+- 각 단계 담당자와 완료 Evidence
 - Go/No-Go 기준과 승인권자
 - Rollback Trigger/절차
 - 핵심 서비스/데이터 검증 방법
@@ -55,7 +56,7 @@ metadata:
 
 - Cutover Scope / Timeline
 - Pre-work / Freeze / Backup
-- Step / Owner / ETA / Dependency
+- Step / 담당자 / ETA / Dependency
 - Completion Evidence
 - Go/No-Go Checkpoint & Criteria
 - Post-open Validation
