@@ -2,7 +2,8 @@
 name: rollback-plan
 description: 오픈/전환 실패 시 안전한 원복 조건, 의사결정 시점, Application/Config/Data 복구 순서와 정합성 검증을 사전에 정의한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -56,7 +57,7 @@ metadata:
 - Rollback Trigger / Severity
 - Decision Matrix
 - Rollback Scope
-- Step / Dependency / Owner
+- Step / Dependency / 담당자
 - Data Handling Rule
 - Backup / Artifact Verification
 - Expected Duration / Service Impact
