@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "ABC Project Forge preflight",
+      "description": "세션 시작 시 Project Forge 기본 구조와 공통 Harness mount를 점검한다.",
+      "trigger": "SessionStart",
+      "action": {"type": "command", "command": "pwsh -NoProfile -File scripts/preflight-check.ps1"},
+      "timeout": 30,
+      "enabled": true
+    }
+  ]
+}
