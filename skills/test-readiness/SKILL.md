@@ -2,7 +2,8 @@
 name: test-readiness
 description: 프로젝트가 통합/UAT/성능/보안 시험을 시작할 준비가 되었는지 요구사항 추적성, 환경, 데이터, 연계, Defect, Threshold, Evidence 기준으로 판정한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -37,7 +38,7 @@ metadata:
 7. 성능 시험은 TPS/Latency/Error Rate/자원 Threshold와 부하 모델을 확인한다.
 8. 보안/개인정보 시험 범위와 Evidence 기준을 확인한다.
 9. 테스트 결과/로그/스크린샷/Trace 등 Evidence 저장 위치와 Naming Rule을 정한다.
-10. Blocking 항목을 별도 목록으로 만들고 Owner/Due Date를 부여한다.
+10. Blocking 항목을 별도 목록으로 만들고 담당자/Due Date를 부여한다.
 11. Ready/Conditionally Ready/Not Ready로 판정하고 근거를 기록한다.
 
 ## Readiness Checklist
@@ -51,7 +52,7 @@ metadata:
 - [ ] 성능 Threshold 정의
 - [ ] 보안/개인정보 범위 확정
 - [ ] Evidence 저장 위치 확정
-- [ ] Blocking Issue Owner / Due Date 지정
+- [ ] Blocking Issue 담당자 / Due Date 지정
 
 ## 판정 기준
 
@@ -89,5 +90,5 @@ AI는 테스트 완료, 품질 승인, 미해결 Defect 위험 수용을 대신�
 - 테스트를 수행할 수 있는가가 아니라 결과를 신뢰할 수 있는가까지 확인했는가?
 - 외부 연계 의존성이 모두 준비되었는가?
 - 성능/보안 시험의 합격 기준이 수치 또는 명확한 판정 기준으로 정의됐는가?
-- Blocking Issue에 Owner와 Due Date가 있는가?
+- Blocking Issue에 담당자와 Due Date가 있는가?
 - Evidence만으로 제3자가 결과를 재검증할 수 있는가?

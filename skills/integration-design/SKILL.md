@@ -2,7 +2,8 @@
 name: integration-design
 description: 고객사 또는 외부 시스템과의 API/File/DB/Event 연계를 계약, 오류처리, 보안, 용량, 재처리, 운영 책임까지 포함해 설계·검토한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -53,7 +54,7 @@ metadata:
 ## 출력 계약
 
 - Interface Overview
-- Source / Target / Owner
+- Source / Target / 담당자
 - Protocol / Contract / Schema
 - Field & Code Mapping
 - Authentication / Security

@@ -2,7 +2,8 @@
 name: requirement-analysis
 description: 고객/내부 요구를 기능·비기능·운영·보안 요구로 구조화하고 추적 가능하며 테스트 가능한 Acceptance Criteria로 만든다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 

@@ -2,7 +2,8 @@
 name: architecture-impact
 description: 프로젝트 변경이 기업메시징 아키텍처, 연계, 데이터, 보안, 성능, 운영, 장애전파와 원복 가능성에 미치는 영향을 체계적으로 분석한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 

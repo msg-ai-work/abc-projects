@@ -2,7 +2,8 @@
 name: migration-plan
 description: 시스템/데이터 Migration의 대상, 순서, 정합성, 소요시간, 검증, 실패조건과 Rollback 연결을 실행 가능한 전환 계획으로 만든다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -27,7 +28,7 @@ Migration을 단순 작업 순서가 아니라 데이터 정합성, 서비스 �
 
 ## 실행 절차
 
-1. Migration 대상, 제외 대상, Source/Target과 Owner를 확정한다.
+1. Migration 대상, 제외 대상, Source/Target과 담당자를 확정한다.
 2. 데이터 매핑, 변환, Default/Null, Code 변환, 중복 제거 규칙을 정의한다.
 3. 전체 데이터량, 변경량, 처리속도와 예상 소요시간을 계산 또는 근거와 함께 추정한다.
 4. `Pre-Migration`, `Delta`, `Final Migration` 등 단계로 분리할 수 있는지 검토한다.
@@ -61,7 +62,7 @@ Migration을 단순 작업 순서가 아니라 데이터 정합성, 서비스 �
 - Concurrent Change Handling
 - Failure / Resume / Retry Strategy
 - Rollback Linkage
-- Evidence / Owner
+- Evidence / 담당자
 - Rehearsal Plan
 - Risk / Open Decision
 

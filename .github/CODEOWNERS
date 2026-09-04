@@ -1,6 +1,16 @@
-# 초기 Owner. 업무별 GitHub Team 구성 후 @msg-ai-work/project-owners 로 교체 권장
+# Projects Domain
+# 역할 체계: 리더 / 담당자 / Reviewer
+# 담당자는 Project Skill/Knowledge/Runbook을 작성·최신화하고 Reviewer가 PR을 검증한다.
+# Bootstrap 단계에서는 @choiss7을 임시 Reviewer로 사용한다.
+# GitHub Team 생성 및 권한 부여 후 권장 전환:
+# - 담당자: @msg-ai-work/projects-maintainers
+# - Reviewer: @msg-ai-work/projects-reviewers
+# - 공통 정책/고위험 변경 판단: @msg-ai-work/leaders
+# Governance SSOT: msg-ai-work/abc/GOVERNANCE.md
+
 * @choiss7
 
+/README.md @choiss7
 /skills/ @choiss7
 /knowledge/ @choiss7
 /runbooks/ @choiss7

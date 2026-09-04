@@ -2,7 +2,8 @@
 name: project-intake-scope
 description: 기업메시징 구축/SI/Migration/PoC 시작 시 목적, 범위, 이해관계자, 제약, 성공기준을 실행 가능한 프로젝트 계약으로 구조화한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
