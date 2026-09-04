@@ -7,3 +7,6 @@ credentials/
 *.log
 .idea/
 .vscode/
+
+# Local MCP credentials/config (commit only the example)
+.kiro/settings/mcp.json

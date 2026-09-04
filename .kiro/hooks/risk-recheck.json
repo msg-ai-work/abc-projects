@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Risk register recheck",
+      "description": "Risk Register가 바뀌면 Owner/Due Date/Human Gate 누락을 다시 검토한다.",
+      "trigger": "PostFileSave",
+      "matcher": "04-RISK-REGISTER\\.md$",
+      "action": {"type": "agent", "prompt": "변경된 Risk Register를 risk-issue-management 기준으로 재검토하라. Owner 없는 Open 항목, Due Date 없는 Action, 근거 없는 Resolved/Accepted, Go/No-Go 영향 누락을 찾아 보고하라. Risk Acceptance를 대신 승인하지 마라."},
+      "enabled": true
+    }
+  ]
+}
