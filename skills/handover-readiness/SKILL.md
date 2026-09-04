@@ -2,7 +2,8 @@
 name: handover-readiness
 description: 구축 결과가 운영 조직이 실제로 인수·운영 가능한 수준인지 아키텍처, Runbook, 알람, 배포/원복, 권한, Known Issue, 교육과 지원체계 기준으로 판정한다.
 metadata:
-  owner: projects
+  responsible-role: 담당자
+  reviewer-role: Reviewer
   version: "1.0"
 ---
 
@@ -37,7 +38,7 @@ metadata:
 8. 운영자가 대표 시나리오를 직접 수행하거나 설명할 수 있는지 확인한다.
 9. 장애 연락망, 고객/외부 시스템 담당자, 유지보수/지원 범위를 명확히 한다.
 10. 교육/Walkthrough/Q&A 결과와 미해결 인수 항목을 기록한다.
-11. 인수 항목을 Ready/Conditional/Blocked로 판정하고 Owner/Due Date를 지정한다.
+11. 인수 항목을 Ready/Conditional/Blocked로 판정하고 담당자/Due Date를 지정한다.
 12. Hypercare 종료 및 프로젝트 종료 조건을 확인한다.
 
 ## Readiness Checklist
@@ -51,12 +52,12 @@ metadata:
 - [ ] Backup / DR Evidence
 - [ ] 운영 교육 / 실습 완료
 - [ ] 유지보수 / 지원 범위 확정
-- [ ] 산출물 저장 위치와 Owner 확정
+- [ ] 산출물 저장 위치와 담당자 확정
 
 ## 판정 기준
 
 - `Ready`: 운영자가 핵심 운영업무를 독립 수행 가능
-- `Conditional`: 제한사항이 있으나 Owner/기한/우회책이 승인됨
+- `Conditional`: 제한사항이 있으나 담당자/기한/우회책이 승인됨
 - `Blocked`: 장애대응, 배포/원복, 권한, 핵심 문서 중 하나라도 운영 수행을 막음
 
 ## 출력 계약
@@ -70,7 +71,7 @@ metadata:
 - DR / Backup Evidence
 - Training / Walkthrough Result
 - Support / Escalation Matrix
-- Blocking Item / Owner / Due Date
+- Blocking Item / 담당자 / Due Date
 - Handover Decision & Rationale
 
 ## Human Gate
@@ -88,4 +89,4 @@ metadata:
 - 새 담당자가 장애 상황에서 누구에게 연락할지 알 수 있는가?
 - 배포와 Rollback을 운영자가 재현할 수 있는가?
 - Secret/개인정보 원문을 산출물에 저장하지 않았는가?
-- 프로젝트 종료 후에도 Known Issue의 Owner가 남아 있는가?
+- 프로젝트 종료 후에도 Known Issue의 담당자가 남아 있는가?
