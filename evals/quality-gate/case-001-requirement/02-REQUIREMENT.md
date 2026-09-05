@@ -1,4 +1,4 @@
-# Requirement Fixture — Missing Acceptance Criteria
+# Requirement Failure Fixture
 
 Status: Awaiting Approval
 
@@ -7,7 +7,3 @@ Status: Awaiting Approval
 
 ## Evidence
 - fixture: case-001-requirement
-
-## Expected Gate
-- FAIL CODE: `REQUIREMENT`
-- Reason: Acceptance Criteria missing

@@ -1,4 +1,4 @@
-# Test Readiness Fixture — Missing Threshold
+# Test Failure Fixture
 
 Status: Draft
 
@@ -12,7 +12,3 @@ Status: Draft
 - fixture: case-004-test
 
 Critical Defect: 0
-
-## Expected Gate
-- FAIL CODE: `TEST`
-- Reason: performance/readiness Threshold missing
