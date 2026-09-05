@@ -1,4 +1,4 @@
-# Delivery Plan Fixture — Missing Execution Ownership
+# Delivery Failure Fixture
 
 Status: Draft
 
@@ -7,7 +7,3 @@ Status: Draft
 
 ## Evidence
 - fixture: case-003-delivery
-
-## Expected Gate
-- FAIL CODE: `DELIVERY`
-- Reason: Dependency / 담당자 / Due Date missing
