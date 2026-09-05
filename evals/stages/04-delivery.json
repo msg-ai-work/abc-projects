@@ -1,0 +1,7 @@
+{
+  "stage": "04-delivery",
+  "file": "04-DELIVERY-PLAN.md",
+  "expectedFailCode": "DELIVERY",
+  "passContent": "# Delivery Plan\n- Project ID: EVAL-04-PASS\n- Status: Draft\n\n## Workstream\n- messaging rollout\n\n## Dependency\n- Stage environment ready\n\n## 담당자\n- eval-project-assignee\n\n## Due Date\n- 2026-09-30\n\n## Evidence\n- synthetic fixture\n",
+  "failContent": "# Delivery Plan\n- Project ID: EVAL-04-FAIL\n- Status: Draft\n\n## Workstream\n- messaging rollout\n\n## Evidence\n- synthetic fixture\n"
+}
