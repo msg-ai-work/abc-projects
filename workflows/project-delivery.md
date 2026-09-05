@@ -38,13 +38,15 @@
 ## 재작업 분류
 | FAIL 코드 | 재실행 Agent | 예 |
 |---|---|---|
-| REQUIREMENT | 02 | AC/Traceability 누락 |
-| ARCHITECTURE | 03 | Interface/Failure/Capacity 누락 |
-| DELIVERY | 04 | Migration/Owner/Dependency 누락 |
-| TEST | 05 | 데이터/환경/Evidence 미준비 |
-| CUTOVER | 06 | Monitoring/Rollback 기준 누락 |
+| SCOPE | 01-project-intake | In/Out Scope, Success Criteria 누락 |
+| REQUIREMENT | 02-requirement | AC/Traceability 누락 |
+| ARCHITECTURE | 03-architecture | Interface/Failure/Capacity 누락 |
+| DELIVERY | 04-delivery-plan | Migration/담당자/Dependency 누락 |
+| TEST | 05-test-readiness | 데이터/환경/Evidence 미준비 |
+| CUTOVER | 06-cutover | Monitoring/Rollback 기준 누락 |
+| HANDOVER | 07-handover | Runbook/Alarm/권한/교육 Evidence 누락 |
 
-동일 Gate는 최대 3회 자동 재검토한다. 이후 Orchestrator는 사람에게 Escalation한다.
+동일 Gate의 `failure_count=1~3`은 지정 Agent로 재작업한다. 동일 Gate가 4번째 실패하면 자동 재작업을 중단하고 `REWORK_LIMIT / ESCALATE`로 사람에게 이관한다. 상세 계약은 `.kiro/steering/rework-policy.md`를 따른다.
 
 ## 종료조건
 - Handover Gate PASS
