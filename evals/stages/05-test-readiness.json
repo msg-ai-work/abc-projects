@@ -1,0 +1,7 @@
+{
+  "stage": "05-test-readiness",
+  "file": "05-TEST-READINESS.md",
+  "expectedFailCode": "TEST",
+  "passContent": "# Test Readiness\n- Project ID: EVAL-05-PASS\n- Verdict: READY\n\n## Traceability\n- REQ-001 -> TC-001\n\n## Environment\n- stage / version v-test\n\n## Threshold\n- p95 < 5s\n\n## Evidence\n- synthetic fixture\n\nCritical Defect: 0\n",
+  "failContent": "# Test Readiness\n- Project ID: EVAL-05-FAIL\n- Verdict: NOT READY\n\n## Traceability\n- REQ-001 -> TC-001\n\n## Environment\n- stage\n\n## Evidence\n- synthetic fixture\n\nCritical Defect: 0\n"
+}

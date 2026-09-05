@@ -1,0 +1,7 @@
+{
+  "stage": "06-cutover",
+  "file": "06-CUTOVER-PLAN.md",
+  "expectedFailCode": "CUTOVER",
+  "passContent": "# Cutover Plan\n- Project ID: EVAL-06-PASS\n- Status: Draft\n\n## Go/No-Go\n- Critical Defect 0\n\n## Monitoring\n- 발송 성공률과 오류율 확인\n\n## Rollback Trigger\n- 오류율 5% 초과가 5분 지속되면 원복 검토\n\n## Evidence\n- synthetic fixture\n",
+  "failContent": "# Cutover Plan\n- Project ID: EVAL-06-FAIL\n- Status: Draft\n\n## Go/No-Go\n- Critical Defect 0\n\n## Monitoring\n- 발송 성공률과 오류율 확인\n\n## Evidence\n- synthetic fixture\n"
+}

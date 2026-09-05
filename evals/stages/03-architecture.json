@@ -1,0 +1,7 @@
+{
+  "stage": "03-architecture",
+  "file": "03-INTERFACE-DESIGN.md",
+  "expectedFailCode": "ARCHITECTURE",
+  "passContent": "# Interface Design\n- Project ID: EVAL-03-PASS\n- Status: Draft\n\n## Interface\n- Source: web\n- Target: messaging-engine\n- Protocol: HTTPS/JSON\n- Timeout: 3s\n- Retry: 2 attempts with backoff\n- Idempotency: request-id header\n\n## Evidence\n- synthetic fixture\n",
+  "failContent": "# Interface Design\n- Project ID: EVAL-03-FAIL\n- Status: Draft\n\n## Interface\n- Source: web\n- Target: messaging-engine\n- Protocol: HTTPS/JSON\n- Authentication: mTLS\n\n## Evidence\n- synthetic fixture\n"
+}

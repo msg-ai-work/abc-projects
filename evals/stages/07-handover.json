@@ -1,0 +1,7 @@
+{
+  "stage": "07-handover",
+  "file": "07-HANDOVER.md",
+  "expectedFailCode": "HANDOVER",
+  "passContent": "# Handover Readiness\n- Project ID: EVAL-07-PASS\n- Verdict: READY\n\n## Runbook\n- 운영 절차 문서 확인\n\n## Alert / Incident Response\n- 장애 대응 연락체계와 알람 기준 확인\n\n## Account / Permission\n- 운영 권한 검증 완료\n\n## Known Issues\n- 없음\n\n## Training / Contact\n- 운영 교육 및 연락처 확인\n\n## Support Scope\n- 운영 지원 범위 명시\n\n## Human Acceptance\n- 사람 승인 대기\n\n## Evidence\n- synthetic fixture\n",
+  "failContent": "# Handover Readiness\n- Project ID: EVAL-07-FAIL\n- Verdict: NOT READY\n\n## Alert / Incident Response\n- 장애 대응 연락체계 확인\n\n## Account / Permission\n- 운영 권한 검토 중\n\n## Known Issues\n- 없음\n\n## Evidence\n- synthetic fixture\n"
+}
