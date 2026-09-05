@@ -1,0 +1,7 @@
+{
+  "stage": "01-intake",
+  "file": "01-PROJECT-INTAKE.md",
+  "expectedFailCode": "SCOPE",
+  "passContent": "# Project Intake\n- Project ID: EVAL-01-PASS\n- Status: Awaiting Approval\n- Evidence: synthetic fixture\n\n## Goal\n기업메시징 프로젝트의 Scope 계약을 검증한다.\n\n## In Scope\n- 메시지 API 변경 분석\n\n## Out of Scope\n- Production 배포\n\n## Stakeholders / R&R\n- 담당자: eval-project-assignee\n- Reviewer: eval-reviewer\n\n## Constraints\n- synthetic data only\n\n## Success Criteria\n- SC-001: In/Out Scope와 승인 대기 상태가 명시된다.\n\n## Dependencies\n- common harness\n\n## Open Decision\n- 없음\n\n## Risk\n- 없음\n",
+  "failContent": "# Project Intake\n- Project ID: EVAL-01-FAIL\n- Status: Draft\n- Evidence: synthetic fixture\n\n## Goal\nScope 초안을 작성한다.\n\n## In Scope\n- 메시지 API 변경 분석\n\n## Stakeholders / R&R\n- 담당자: eval-project-assignee\n\n## Open Decision\n- 없음\n"
+}
