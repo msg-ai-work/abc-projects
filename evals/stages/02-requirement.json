@@ -1,0 +1,7 @@
+{
+  "stage": "02-requirement",
+  "file": "02-REQUIREMENT.md",
+  "expectedFailCode": "REQUIREMENT",
+  "passContent": "# Requirements\n- Project ID: EVAL-02-PASS\n- Status: Awaiting Approval\n\n## Requirements\n- REQ-001: 메시지 전송 요청을 수신하고 처리한다.\n\n## Acceptance Criteria\nGiven 유효한 요청이 있고 When 전송 API를 호출하면 Then 접수 ID를 반환한다.\n\n## Evidence\n- synthetic fixture\n\n## Open Decision\n- 없음\n",
+  "failContent": "# Requirements\n- Project ID: EVAL-02-FAIL\n- Status: Draft\n\n## Requirements\n- REQ-001: 메시지 전송 요청을 수신한다.\n\n## Evidence\n- synthetic fixture\n"
+}
