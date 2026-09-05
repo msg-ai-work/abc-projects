@@ -1,13 +1,117 @@
-param([string]$ProjectId = '')
+param(
+  [string]$ProjectId = '',
+  [string]$Root = ''
+)
+
 $ErrorActionPreference = 'Stop'
-$root = if ($ProjectId) { "docs/projects/$ProjectId" } else { 'docs/projects' }
-if (-not (Test-Path $root)) { Write-Output "Quality gate: no project artifact directory yet ($root)"; exit 0 }
-$files = Get-ChildItem $root -Filter '*.md' -Recurse -ErrorAction SilentlyContinue
-$fail = @()
+$rootPath = if ($Root) { $Root } elseif ($ProjectId) { "docs/projects/$ProjectId" } else { 'docs/projects' }
+
+if (-not (Test-Path $rootPath)) {
+  Write-Output "Quality gate: no project artifact directory yet ($rootPath)"
+  exit 0
+}
+
+$files = @(Get-ChildItem $rootPath -Filter '*.md' -Recurse -ErrorAction SilentlyContinue)
+$script:fail = New-Object System.Collections.Generic.List[object]
+
+function Add-Failure([string]$Code, [string]$File, [string]$Message) {
+  $script:fail.Add([pscustomobject]@{
+    Code = $Code
+    File = $File
+    Message = $Message
+  }) | Out-Null
+}
+
+$contentByName = @{}
 foreach ($f in $files) {
   $text = Get-Content $f.FullName -Raw
-  if ($text -match 'Status:\s*Approved' -and $text -notmatch 'Evidence') { $fail += "$($f.Name): Approved without Evidence section" }
-  if ($text -match '<YOUR_TOKEN|ghp_[A-Za-z0-9]+') { $fail += "$($f.Name): possible credential pattern" }
+  $contentByName[$f.Name] = $text
+
+  if ($text -match '(?i)(<YOUR_TOKEN>|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|Bearer\s+[A-Za-z0-9._-]{20,})') {
+    Add-Failure 'SECURITY' $f.Name 'possible credential pattern'
+  }
+
+  if ($text -match '(?im)^\s*Status\s*:\s*Approved\s*$' -and $text -notmatch '(?im)^#{1,6}\s+Evidence\b') {
+    Add-Failure 'EVIDENCE' $f.Name 'Approved without Evidence section'
+  }
 }
-if ($fail.Count -gt 0) { $fail | ForEach-Object { Write-Error $_ }; exit 1 }
-Write-Output "Project document quality gate: PASS ($($files.Count) files)"
+
+$requirement = $contentByName['02-REQUIREMENT.md']
+if ($requirement) {
+  if ($requirement -notmatch '(?i)\bREQ[-_ ]?\d+\b') {
+    Add-Failure 'REQUIREMENT' '02-REQUIREMENT.md' 'requirement ID missing'
+  }
+  if ($requirement -notmatch '(?i)Acceptance Criteria|Given\s+.+When\s+.+Then') {
+    Add-Failure 'REQUIREMENT' '02-REQUIREMENT.md' 'Acceptance Criteria missing'
+  }
+}
+
+$architectureParts = @()
+foreach ($name in @('03-IMPACT-ANALYSIS.md', '03-INTERFACE-DESIGN.md')) {
+  if ($contentByName.ContainsKey($name)) { $architectureParts += $contentByName[$name] }
+}
+if ($architectureParts.Count -gt 0) {
+  $architecture = $architectureParts -join "`n"
+  foreach ($keyword in @('Timeout', 'Retry', 'Idempotency')) {
+    if ($architecture -notmatch "(?i)\b$keyword\b") {
+      Add-Failure 'ARCHITECTURE' '03-*' "$keyword contract missing"
+    }
+  }
+}
+
+$delivery = $contentByName['04-DELIVERY-PLAN.md']
+if ($delivery) {
+  if ($delivery -notmatch '(?i)Dependency|의존') {
+    Add-Failure 'DELIVERY' '04-DELIVERY-PLAN.md' 'Dependency missing'
+  }
+  if ($delivery -notmatch '(?i)담당자|Owner') {
+    Add-Failure 'DELIVERY' '04-DELIVERY-PLAN.md' 'responsible assignee missing'
+  }
+  if ($delivery -notmatch '(?i)Due Date|기한|완료일') {
+    Add-Failure 'DELIVERY' '04-DELIVERY-PLAN.md' 'Due Date missing'
+  }
+}
+
+$testReadiness = $contentByName['05-TEST-READINESS.md']
+if ($testReadiness) {
+  foreach ($check in @(
+    @{ Pattern = '(?i)Traceability|추적성'; Message = 'Requirement-to-Test Traceability missing' },
+    @{ Pattern = '(?i)Environment|환경'; Message = 'test environment evidence missing' },
+    @{ Pattern = '(?i)Threshold|임계'; Message = 'performance/readiness Threshold missing' },
+    @{ Pattern = '(?i)Evidence|증적'; Message = 'test Evidence missing' }
+  )) {
+    if ($testReadiness -notmatch $check.Pattern) {
+      Add-Failure 'TEST' '05-TEST-READINESS.md' $check.Message
+    }
+  }
+  if ($testReadiness -match '(?im)^\s*Critical Defect\s*:\s*([1-9]\d*)\s*$') {
+    Add-Failure 'TEST' '05-TEST-READINESS.md' 'Critical Defect must be 0'
+  }
+}
+
+$cutover = $contentByName['06-CUTOVER-PLAN.md']
+if ($cutover) {
+  if ($cutover -notmatch '(?i)Go/No-Go|Go-No-Go|Go No-Go') {
+    Add-Failure 'CUTOVER' '06-CUTOVER-PLAN.md' 'Go/No-Go criteria missing'
+  }
+  if ($cutover -notmatch '(?i)Monitoring|모니터링') {
+    Add-Failure 'CUTOVER' '06-CUTOVER-PLAN.md' 'Monitoring plan missing'
+  }
+  if ($cutover -notmatch '(?i)Rollback Trigger|Rollback Criteria|원복 기준|원복 조건') {
+    Add-Failure 'CUTOVER' '06-CUTOVER-PLAN.md' 'Rollback trigger missing'
+  }
+}
+
+$riskRegister = $contentByName['04-RISK-REGISTER.md']
+if ($riskRegister -and $riskRegister -match '(?i)\bAccepted\b' -and $riskRegister -notmatch '(?i)Human Approval Evidence|승인 Evidence|승인 근거') {
+  Add-Failure 'RISK' '04-RISK-REGISTER.md' 'Risk Accepted without human approval evidence'
+}
+
+if ($script:fail.Count -gt 0) {
+  foreach ($item in $script:fail) {
+    Write-Error "[$($item.Code)] $($item.File): $($item.Message)"
+  }
+  exit 1
+}
+
+Write-Output "Project quality gate: PASS ($($files.Count) files, root=$rootPath)"
