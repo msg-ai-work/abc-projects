@@ -31,8 +31,24 @@ foreach ($f in $files) {
     Add-Failure 'SECURITY' $f.Name 'possible credential pattern'
   }
 
-  if ($text -match '(?im)^\s*Status\s*:\s*Approved\s*$' -and $text -notmatch '(?im)^#{1,6}\s+Evidence\b') {
-    Add-Failure 'EVIDENCE' $f.Name 'Approved without Evidence section'
+  if ($text -match '(?im)^\s*[-*]?\s*Status\s*:\s*Approved\s*$' -and $text -notmatch '(?im)^#{1,6}\s+Evidence\b|^\s*[-*]?\s*Evidence\s*:') {
+    Add-Failure 'EVIDENCE' $f.Name 'Approved without Evidence'
+  }
+}
+
+$intake = $contentByName['01-PROJECT-INTAKE.md']
+if ($intake) {
+  foreach ($check in @(
+    @{ Pattern = '(?i)\bGoal\b|목표'; Message = 'Goal missing' },
+    @{ Pattern = '(?i)In Scope|포함 범위'; Message = 'In Scope missing' },
+    @{ Pattern = '(?i)Out of Scope|제외 범위'; Message = 'Out of Scope missing' },
+    @{ Pattern = '(?i)Stakeholder|R&R|이해관계자'; Message = 'Stakeholder/R&R missing' },
+    @{ Pattern = '(?i)Success Criteria|성공 기준'; Message = 'Success Criteria missing' },
+    @{ Pattern = '(?i)Open Decision|미결정'; Message = 'Open Decision section missing' }
+  )) {
+    if ($intake -notmatch $check.Pattern) {
+      Add-Failure 'SCOPE' '01-PROJECT-INTAKE.md' $check.Message
+    }
   }
 }
 
@@ -84,7 +100,7 @@ if ($testReadiness) {
       Add-Failure 'TEST' '05-TEST-READINESS.md' $check.Message
     }
   }
-  if ($testReadiness -match '(?im)^\s*Critical Defect\s*:\s*([1-9]\d*)\s*$') {
+  if ($testReadiness -match '(?im)^\s*[-*]?\s*Critical Defect\s*:\s*([1-9]\d*)\s*$') {
     Add-Failure 'TEST' '05-TEST-READINESS.md' 'Critical Defect must be 0'
   }
 }
@@ -99,6 +115,23 @@ if ($cutover) {
   }
   if ($cutover -notmatch '(?i)Rollback Trigger|Rollback Criteria|원복 기준|원복 조건') {
     Add-Failure 'CUTOVER' '06-CUTOVER-PLAN.md' 'Rollback trigger missing'
+  }
+}
+
+$handover = $contentByName['07-HANDOVER.md']
+if ($handover) {
+  foreach ($check in @(
+    @{ Pattern = '(?i)Runbook|운영 절차'; Message = 'Runbook missing' },
+    @{ Pattern = '(?i)Alert|Incident|Alarm|장애'; Message = 'Alert/Incident response missing' },
+    @{ Pattern = '(?i)Account|Permission|권한'; Message = 'Account/Permission handover missing' },
+    @{ Pattern = '(?i)Known Issue|Known Issues|알려진 이슈'; Message = 'Known Issues missing' },
+    @{ Pattern = '(?i)Training|Contact|교육|연락'; Message = 'Training/Contact missing' },
+    @{ Pattern = '(?i)Support Scope|지원 범위'; Message = 'Support Scope missing' },
+    @{ Pattern = '(?i)Human Acceptance|운영 인수'; Message = 'Human Acceptance section missing' }
+  )) {
+    if ($handover -notmatch $check.Pattern) {
+      Add-Failure 'HANDOVER' '07-HANDOVER.md' $check.Message
+    }
   }
 }
 
