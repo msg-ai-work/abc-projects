@@ -1,4 +1,4 @@
-# Interface Design Fixture — Missing Resilience Contract
+# Architecture Failure Fixture
 
 Status: Draft
 
@@ -10,7 +10,3 @@ Status: Draft
 
 ## Evidence
 - fixture: case-002-architecture
-
-## Expected Gate
-- FAIL CODE: `ARCHITECTURE`
-- Reason: Timeout / Retry / Idempotency contract missing
