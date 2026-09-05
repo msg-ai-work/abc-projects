@@ -1,4 +1,4 @@
-# Cutover Fixture — Missing Rollback Trigger
+# Cutover Failure Fixture
 
 Status: Draft
 
@@ -10,7 +10,3 @@ Status: Draft
 
 ## Evidence
 - fixture: case-005-cutover
-
-## Expected Gate
-- FAIL CODE: `CUTOVER`
-- Reason: Rollback Trigger missing
